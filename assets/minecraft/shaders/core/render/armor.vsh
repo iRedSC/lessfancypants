@@ -48,7 +48,7 @@ void main() {
 
     //number of armors from texture size
     vec2 size = textureSize(Sampler0, 0);
-    int n = int(2.*size.y/size.x);
+    int n = int(2*size.y/size.x);
     //if theres more than 1 custom armor
     if (n > 1) {
         //divide uv by number of armors, it is now on the first armor

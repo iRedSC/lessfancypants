@@ -18,6 +18,8 @@ for example, to equip the second custom chestplate:
 
 *colors beyond total number of armor textures will default to use the first texture, but with tint color applied*
 
+when the glowing effect is applied, the first custom armor texture is what glowing outline will show
+
 ## performance:
 
 texture reading is a fairly expensive operation in shaders
