@@ -22,7 +22,7 @@ for example, to equip the second custom chestplate:
 
 texture reading is a fairly expensive operation in shaders
 
-original fancypants does all the calculation in frag shader for some reason, which means everything is calculated for every single pixel of armor on the screen
+original fancypants does all the calculation in the fragment shader for some reason, which means everything is calculated for every single pixel of armor on the screen
 
 it also uses a `for` loop that reads the texture `O(N)` times where `N` is the amount of custom armors
 
@@ -30,6 +30,6 @@ the compiler will usually optimize loops if they run a predictable number of tim
 
 in comparison, less fancy pants does not read the texture color at all for the calculations
 
-all the calculation are done in the vertex shader, which runs once per geometry vertex instead of per pixel on screen
+the calculations are all done in the vertex shader, which runs once per geometry vertex instead of per pixel on screen
 
 there are also no loops, the shader program runs in constant time with respect to the amount of custom armors
