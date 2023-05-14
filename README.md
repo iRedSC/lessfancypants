@@ -1,4 +1,4 @@
-# pants but less fancy
+# pants, but less fancy
 
 [fancypants](https://github.com/Ancientkingg/fancyPants) is kinda really inefficent and unoptimized
 
