@@ -13,7 +13,6 @@ in vec3 Normal;
 uniform sampler2D Sampler0;
 uniform sampler2D Sampler1;
 uniform sampler2D Sampler2;
-
 uniform mat4 ModelViewMat;
 uniform mat4 ProjMat;
 uniform mat3 IViewRotMat;
@@ -29,6 +28,9 @@ out vec4 lightColor;
 out vec4 overlayColor;
 out vec2 uv;
 out vec4 normal;
+flat out vec2 size;
+flat out int n;
+flat out int i;
 
 int toint(vec3 c) {
     ivec3 v = ivec3(c*255);
@@ -46,19 +48,15 @@ void main() {
     uv = UV0;
     normal = ProjMat * ModelViewMat * vec4(Normal, 0.0);
 
-    //number of armors from texture size
-    vec2 size = textureSize(Sampler0, 0);
-    int n = int(2*size.y/size.x);
-    //if theres more than 1 custom armor
+    n = i = 0;
+    size = textureSize(Sampler0, 0);
+    n = int(2*size.y/size.x);
     if (n > 1) {
-        //divide uv by number of armors, it is now on the first armor
         uv.y /= n;
-        //if color index is within number of armors
-        int i = toint(Color.rgb);
+        i = toint(Color.rgb);
+        float offset = i*size.x/size.y/2.;
         if (i < n) {
-            //move uv down to index
-            uv.y += i*size.x/size.y/2.;
-            //remove tint color
+            uv.y += offset;
             tintColor = vec4(1);
         }
     }
